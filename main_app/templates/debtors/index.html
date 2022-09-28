@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Debtor List</h1>
+
+{% for debtor in debtors %}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title"><b>{{ debtor.name }}</b></span>
+      <p>Debts Value: ${{ debtor.debts }}</p>
+      <p>Age: {{ debtor.age }}</p>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
