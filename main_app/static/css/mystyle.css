@@ -17,3 +17,11 @@ footer.page-footer {
   padding-top: 0;
   text-align: right;
 }
+
+a {
+  color: black
+}
+
+a:hover {
+  color: grey
+}
