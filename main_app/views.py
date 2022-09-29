@@ -14,3 +14,7 @@ def about(request):
 def debtors_index(request):
   debtors = Debtor.objects.all()
   return render(request, 'debtors/index.html', { 'debtors': debtors })
+
+def debtors_detail(request, debtor_id):
+  debtor = Debtor.objects.get(id=debtor_id)
+  return render(request, 'debtors/detail.html', { 'debtor': debtor })
