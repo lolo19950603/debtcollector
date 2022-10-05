@@ -12,11 +12,6 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-# Add new view
-def debtors_index(request):
-  debtors = Debtor.objects.all()
-  return render(request, 'debtors/index.html', { 'debtors': debtors })
-
 class DebtorList(ListView):
   model = Debtor
 
