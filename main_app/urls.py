@@ -4,6 +4,9 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
-    path('debtors/', views.debtors_index, name='index'),
-    path('debtors/<int:debtor_id>/', views.debtors_detail, name='detail')
+    path('debtors/', views.DebtorList.as_view(), name='index'),
+    path('debtors/<int:pk>/', views.DebtorDetail.as_view(), name='detail'),
+    path('debtors/create/', views.DebtorCreate.as_view(), name='debtors_create'),
+    path('debtors/<int:pk>/update', views.DebtorUpdate.as_view(), name='debtors_update'),
+    path('debtors/<int:pk>/delete', views.DebtorDelete.as_view(), name='debtors_delete')
 ]

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Debtor
 
 
@@ -15,6 +17,20 @@ def debtors_index(request):
   debtors = Debtor.objects.all()
   return render(request, 'debtors/index.html', { 'debtors': debtors })
 
-def debtors_detail(request, debtor_id):
-  debtor = Debtor.objects.get(id=debtor_id)
-  return render(request, 'debtors/detail.html', { 'debtor': debtor })
+class DebtorList(ListView):
+  model = Debtor
+
+class DebtorDetail(DetailView):
+  model = Debtor
+
+class DebtorCreate(CreateView):
+  model = Debtor
+  fields = '__all__'
+
+class DebtorUpdate(UpdateView):
+  model = Debtor
+  fields = ['debts', 'age']
+
+class DebtorDelete(DeleteView):
+  model = Debtor
+  success_url = '/debtors/'

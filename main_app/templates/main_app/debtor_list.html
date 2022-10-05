@@ -3,7 +3,7 @@
 
 <h1>Debtor List</h1>
 
-{% for debtor in debtors %}
+{% for debtor in object_list %}
   <div class="card">
     <a href="{% url 'detail' debtor.id %}">
       <div class="card-content">

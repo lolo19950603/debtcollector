@@ -9,6 +9,10 @@
     <p>Debts Value: <b>$</b>{{ debtor.debts }}</p>
     <p>Age: {{ debtor.age }}</p>
   </div>
+  <div class="card-action">
+    <a href="{% url 'debtors_update' debtor.id %}">Edit</a>
+    <a href="{% url 'debtors_delete' debtor.id %}">Delete</a>
+  </div>
 </div>
 
 {% endblock %}
