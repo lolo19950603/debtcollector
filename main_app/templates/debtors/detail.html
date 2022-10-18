@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Debtor Details</h1>
+
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ debtor.name }}</span>
+        <p>Debt Value: <b>$</b>{{ debtor.debt }}</p>
+        <p>Age: {{ debtor.age }}</p>
+      </div>
+      <div class="card-action">
+        <a href="{% url 'debtors_update' debtor.id %}">Edit</a>
+        <a href="{% url 'debtors_delete' debtor.id %}">Delete</a>
+      </div>
+    </div>
+  </div>
+  <div class="col s6">
+    <form action="{% url 'add_payment' debtor.id %}" method="post">
+      {% csrf_token %}
+      {{ payment_form.as_p }}
+      <input type="submit" class="btn" value="Add Payment">
+    </form>
+    <br>
+    {% if debtor.paid_off %}
+      <div class="card-panel teal-text center-align">The debt has been paid off!</div>
+    {% else %}
+      <div class="card-panel red-text center-align">You have outstanding balance!</div>
+    {% endif %}
+    <table class="striped">
+      <thead>
+        <tr><th>Date</th><th>Payment</th></tr>
+      </thead>
+      <tbody>
+        {% for payment in debtor.payment_set.all %}
+          <tr>
+            <td>{{payment.date}}</td>
+            <td>{{payment.payment}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  var dateEl = document.getElementById('id_date');
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+</script>
+{% endblock %}
