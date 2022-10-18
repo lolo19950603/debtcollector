@@ -3,10 +3,20 @@ from django.urls import reverse
 from django.core.validators import MinValueValidator
 
 # Create your models here.
+class Insurance(models.Model):
+  description = models.CharField(max_length=50)
+
+  def __str__(self):
+    return self.description
+
+  def get_absolute_url(self):
+    return reverse('insurance_index')
+
 class Debtor(models.Model):
     name = models.CharField(max_length=100)
     debt = models.IntegerField()
     age = models.IntegerField()
+    insurance = models.ManyToManyField(Insurance)
 
     def __str__(self):
         return self.name

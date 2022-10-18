@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Insurance List</h1>
+
+{% for insurance in object_list %}
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ insurance.description }}</span>
+        </div>
+    </div>
+  </a>
+{% endfor %}
+
+{% endblock %}
