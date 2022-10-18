@@ -37,7 +37,7 @@
         {% for payment in debtor.payment_set.all %}
           <tr>
             <td>{{payment.date}}</td>
-            <td>{{payment.payment}}</td>
+            <td><b>$</b> {{payment.payment}}</td>
           </tr>
         {% endfor %}
       </tbody>
