@@ -1,4 +1,3 @@
-from msilib.schema import Patch
 from django.contrib import admin
 
 # Register your models here.
