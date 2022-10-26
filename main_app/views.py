@@ -48,7 +48,7 @@ class DebtorDetail(DetailView):
 
 class DebtorCreate(CreateView):
   model = Debtor
-  fields = '__all__'
+  fields = ['name', 'debt', 'age']
 
 class DebtorUpdate(UpdateView):
   model = Debtor

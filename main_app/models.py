@@ -16,7 +16,7 @@ class Debtor(models.Model):
     name = models.CharField(max_length=100)
     debt = models.IntegerField()
     age = models.IntegerField()
-    insurance = models.ManyToManyField(Insurance)
+    insurance = models.ManyToManyField(Insurance, blank=True)
 
     def __str__(self):
         return self.name
